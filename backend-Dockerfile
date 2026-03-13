@@ -5,12 +5,12 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy application code + config
 COPY *.py .
+COPY config.yaml .
 
-# Copy vector store and agent config (baked into the image)
+# Copy vector store (baked into the image)
 COPY vdb/ ./vdb/
-COPY agent_answering/ ./agent_answering/
 
 EXPOSE 8000
 
